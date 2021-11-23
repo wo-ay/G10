@@ -82,6 +82,9 @@ begin
     
 end 教师任务发布
 
+
+
+
 Procedure 教师任务编辑 is（可有可无）
 begin 
     选中任务(获取任务号)，进入任务界面
@@ -116,3 +119,10 @@ begin
     select task_tital,task_content,task_course,task_ddl from task where task_id = ?    
 
 end 教师任务查看
+
+Procedure 教师任务发布 is
+begin
+    获取对应课程号
+    select count（task_finsh_stu）from course_student where course=?
+
+end 教师任务发布
