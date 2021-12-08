@@ -13,7 +13,7 @@
 		data() {
 			return {
 				timetables: [
-                  ['', '', '', '', '', '', '毛概', '毛概', '', '', '', '选修'],
+                  ['', '', '', '', '', '', '', '', '', '', '', ''],
                   ['', '', '', '', '', '', '', '', '', '', '', ''],
                   ['', '', '', '', '', '', '', '', '', '', '', ''],
                   ['', '', '', '', '电装实习', '电装实习', '', '', '', '大学体育', '大学体育', ''],
@@ -57,16 +57,17 @@
 				console.log(this.courseList.length);
 				//for循环根据每一门课的_id到course中查找具体的课程详细,并改变timetables
 				for (var i = 0; i < this.courseList.length; i++){
-					this.searchCourse(this.courseList[i].course_id)
-					console.log(this.courseList[i].course_id)
-					console.log(this.start_time)
-					console.log(this.end_time)
-					for (var j = this.start_time; j <= this.end_time; j++) {
-						console.log(j)
-						
-						console.log(this.timetables[this.course_day][j])
-						this.timetables[this.course_day][j] = this.course_name
-					}
+					this.searchCourse(this.courseList[i].course_id).then(res => {
+						console.log(this.courseList[i].course_id)//1
+						console.log(this.start_time)
+						console.log(this.end_time)
+						for (var j = this.start_time; j <= this.end_time; j++) {
+							// console.log(j)
+							console.log(this.timetables[this.course_day][j])
+							this.timetables[this.course_day][j] = this.course_name
+						}
+					})
+
 				}
 					
 			},
@@ -95,9 +96,12 @@
 					}
 					//console.log(this.course_name)
 					this.start_time = result.data[0].start_time
+					
+					console.log(this.start_time)
 					this.end_time = result.data[0].end_time
 					this.course_add = result.data[0].course_add
 				})
+				return ""
 			}
 		},
 		components:{
