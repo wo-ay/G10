@@ -97,7 +97,7 @@
 		margin-right: 30rpx;
 		margin-left: 30rpx;
 		padding: 20rpx;
-		background-color: #F0FFF0;
+		background-color: #F2F2F2;
 		border-radius: 20rpx;
 
 	}
