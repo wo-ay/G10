@@ -4,10 +4,10 @@
 		<view class="main">
 			
 			<view class="task" id="task_course">
-				<textarea v-model="task_course" placeholder="请输入课程名"></textarea>
+				<textarea v-model="task_course" placeholder="请输入课程名" class="text"></textarea>
 			</view>
 			<view class="task" id="task_title">
-				<textarea v-model="task_title" placeholder="请输入任务"></textarea>
+				<textarea v-model="task_title" placeholder="请输入任务" class="text"></textarea>
 			</view>
 			<long-date
 			    type="between" 
@@ -19,7 +19,7 @@
 			    @select="Time">
 			</long-date>
 			<view class="task" id="task_content">
-				<textarea v-model="task_content" placeholder="请输入任务内容"></textarea>
+				<textarea v-model="task_content" placeholder="请输入任务内容" class="text"></textarea>
 			</view>
 		</view>
 		
@@ -94,10 +94,16 @@
 	}
 	.task{
 		height: 80rpx;
-		border:#006400;
+		background-color: #F2F2F2;
 		border-radius: 20rpx;
-		border-style:groove;
+
 		margin: 20rpx;
+	}
+	.text{
+		padding-top: 15rpx;
+		margin-top: 20rpx;
+		margin-right: 30rpx;
+		margin-left: 20rpx;
 	}
 	
 	#task_content{
