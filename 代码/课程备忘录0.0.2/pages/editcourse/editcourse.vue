@@ -3,9 +3,8 @@
 
 		<view class="main">
 			<view class="task" id="task_course">
-				<textarea :value="this.course_name" placeholder="请输入课程名" v-model="course_name" class="text"></textarea>
+				<textarea  placeholder="请输入课程名" v-model="course_name" class="text"></textarea>
 			</view>
-			
 			
 			<view class="task">
 				<select-lay :zindex="1211" :value="course_day" name="name" placeholder="请选择课程所在日" :options="datalist"
@@ -306,7 +305,7 @@
 	.start_endtime {
 		height: 70rpx;
 		/* border: #006400; */
-		background-color: #F0FFF0;
+		background-color: #F2F2F2;
 		border-radius: 20rpx;
 		/* border-style: groove; */
 		margin: 20rpx;
