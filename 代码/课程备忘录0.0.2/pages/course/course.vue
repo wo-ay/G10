@@ -3,8 +3,11 @@
 		<view>
 			<lpxtimetable :timetables="timetables"></lpxtimetable>
 		</view>
+		
+		<button id = "button">111</button>
+		
 	</view>
-	
+
 </template>
 
 <script>
@@ -13,64 +16,75 @@
 		data() {
 			return {
 				timetables: [
-                  ['', '', '', '', '', '', '', '', '', '', '', ''],
-                  ['', '', '', '', '', '', '', '', '', '', '', ''],
-                  ['', '', '', '', '', '', '', '', '', '', '', ''],
-                  ['', '', '', '', '电装实习', '电装实习', '', '', '', '大学体育', '大学体育', ''],
-                  ['', '', '数据结构与算法分析', '数据结构与算法分析', '', '', '', '', '信号与系统', '信号与系统', '', '']
-                ],
-				courseList:[
-					
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', '']
+				],	
+				courseList: [
+
 				],
-				stu_idnum:"31901238",
-				
-				course_name:"",
-				course_day:"",
-				start_time:"",
-				end_time:"",
-				course_add:"",
-				theCourse:[]
+				stu_idnum: "",
+				course_name: "",
+				course_day: "",
+				start_time: "",
+				end_time: "",
+				course_add: "",
+				theCourse: []
 			}
 		},
-		
-		onLoad(){
+
+		onLoad() {
+			//this.stu_idnum = "31901238"
+			this.stu_idnum = uni.getStorageSync("globalUser");
 			this.loadCourse()
 		},
 		
+		onShow(){
+			this.loadCourse()
+		},
+		
+		onPullDownRefresh() {
+			//监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+			console.log('refresh');
+			this.loadCourse();
+		
+			setTimeout(function() {
+				uni.stopPullDownRefresh(); //停止下拉刷新动画
+			}, 1000);
+		},
+
 		methods: {
 			loadCourse() {
 				uniCloud.callFunction({
-					name:"loadCourse",
-					data:{
-						stu_idnum:this.stu_idnum
+					name: "loadCourse",
+					data: {
+						stu_idnum: this.stu_idnum
 					}
-				}).then((res)=>{
-					const {result} = res
+				}).then((res) => {
+					const {
+						result
+					} = res
 					this.courseList = result.data
 					this.updateTimeTables()
 				})
-				
-
 			},
+			
 			updateTimeTables() {
-
-				console.log(this.courseList.length);
 				//for循环根据每一门课的_id到course中查找具体的课程详细,并改变timetables
-				for (var i = 0; i < this.courseList.length; i++){
-					this.searchCourse(this.courseList[i].course_id).then(res => {
-						console.log(this.courseList[i].course_id)//1
-						console.log(this.start_time)
-						console.log(this.end_time)
-						for (var j = this.start_time; j <= this.end_time; j++) {
-							// console.log(j)
-							console.log(this.timetables[this.course_day][j])
-							this.timetables[this.course_day][j] = this.course_name
-						}
-					})
+				for (var i = 0; i < this.courseList.length; i++) {
+					//this.searchCourse(this.courseList[i].course_id)
+					this.searchCourse(this.courseList[i].course_id)
+					// for (var j = this.start_time; j <= this.end_time; j++) {
+					// 	// console.log(j)
+					// 	//console.log(this.timetables[this.course_day][j])
+					// 	this.timetables[this.course_day][j] = this.course_name
+					// }
 
 				}
-					
-			},
+
+			},	
 			
 			searchCourse(course_id) {
 				uniCloud.callFunction({
@@ -83,40 +97,52 @@
 					this.theCourse = result.data
 					//该课程的详细信息
 					this.course_name = result.data[0].course_name
+				
 					if (result.data[0].course_day == "周一") {
-						this.course_day = 1
+						this.course_day = 0
 					} else if (result.data[0].course_day == "周二") {
-						this.course_day = 2
+						this.course_day = 1
 					} else if (result.data[0].course_day == "周三") {
-						this.course_day = 3
+						this.course_day = 2
 					} else if (result.data[0].course_day == "周四") { 
-						this.course_day = 4
+						this.course_day = 3
 					} else if (result.data[0].course_day == "周五") {
-						this.course_day = 5
+						this.course_day = 4
 					}
-					//console.log(this.course_name)
-					this.start_time = result.data[0].start_time
+					console.log(this.course_name)
 					
-					console.log(this.start_time)
+					console.log(this.course_day)
+					this.start_time = result.data[0].start_time					
 					this.end_time = result.data[0].end_time
 					this.course_add = result.data[0].course_add
+					console.log(this.start_time + "  " + this.end_time)
+					for (var j = this.start_time; j <= this.end_time; j++) {
+						//this.timetables[this.course_day][j - 1]= this.course_name
+						this.$set(this.timetables[this.course_day],j - 1,this.course_name)
+					}
+					console.log("周三第二节课" + this.timetables[2][1])
+					console.log("周三第三节课" + this.timetables[2][2])
+					// console.log(this.timetables)
+					
+					// this.timetables[0][1] = "软件工程"	
+					//this.$set(this.timetables[0],1,"软件工程")
+					console.log(this.timetables[0][1])	
 				})
-				return ""
 			}
 		},
-		components:{
+		components: {
 			lpxtimetable
 		},
-		onNavigationBarButtonTap:function(e){
-		    console.log(e.text);//提交
-			console.log(e.fontSize);//16px
+		onNavigationBarButtonTap: function(e) {
+			console.log(e.text); //提交
+			console.log(e.fontSize); //16px
 			uni.navigateTo({
-				url:'../editcourse/editcourse'
+				url: '../editcourse/editcourse'
 			})
 		}
 	}
 </script>
 
 <style>
-
+	
 </style>

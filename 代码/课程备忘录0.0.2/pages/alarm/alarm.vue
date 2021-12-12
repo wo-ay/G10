@@ -19,12 +19,15 @@
 	export default {
 		data() {
 			return {
-				user_id:"31901245",
-				list:[]
+				user_id:"",
+				list:[],
+				nextAlarm:""
 			}
 		},
 		
 		onLoad(){
+			this.user_id = uni.getStorageSync("globalUser");
+			console.log(this.user_id)
 			this.loadAlarm()
 		},
 		
@@ -45,6 +48,7 @@
 			},
 			
 			loadAlarm() {
+				console.log(this.user_id)
 				uniCloud.callFunction({
 					name:"loadAlarm",
 					data:{

@@ -28,7 +28,7 @@
 <script>
   export default {
     name: 'Timetable',
-    props: {
+    props: {//接收父组件传来的数据
       timetableType: {
         type: Array,
         default: () => {
@@ -72,7 +72,8 @@
         allPalette: [...this.palette, '#f05261', '#48a8e4', '#ffd061', '#52db9a', '#70d3e6', '#52db9a', '#3f51b5', '#f3d147', '#4adbc3', '#673ab7', '#f3db49', '#76bfcd', '#b495e1', '#ff9800', '#8bc34a']
       }
     },
-    computed: {
+    computed: {//计算属性必须是有一个返回值的哦  在html写被计算的值 在computed中去直接调用哈
+
       courseData () {
         // 为数据标记背景颜色的函数
         let paletteIndex = 0
