@@ -1,0 +1,43 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"course_id": {
+			"title": "课程号",
+			"bosnType": "String"
+		},
+		"course_name": {
+			"title": "课程名",
+			"bosnType": "String"
+		},
+		"course_add": {
+			"title": "上课地址",
+			"bosnType": "String"
+		},
+		"course_start": {
+			"title": "课程开始时间",
+			"bosnType": "String"
+		},
+		"course_end": {
+			"title": "课程结束时间",
+			"bosnType": "String"
+		},
+		"course_teacher_name": {
+			"title": "课程教师",
+			"bosnType": "String"
+		},
+		"course_stunum": {
+			"title": "课程人数",
+			"bosnType": "String"
+		}
+	}
+}

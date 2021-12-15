@@ -1,0 +1,1 @@
+<view><view><lpxtimetable vue-id="3b395460-1" timetables="{{timetables}}" bind:__l="__l"></lpxtimetable></view></view>

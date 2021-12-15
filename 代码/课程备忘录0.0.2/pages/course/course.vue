@@ -4,7 +4,7 @@
 			<lpxtimetable :timetables="timetables"></lpxtimetable>
 		</view>
 		
-		<button id = "button">111</button>
+		
 		
 	</view>
 
@@ -120,8 +120,8 @@
 						//this.timetables[this.course_day][j - 1]= this.course_name
 						this.$set(this.timetables[this.course_day],j - 1,this.course_name)
 					}
-					console.log("周三第二节课" + this.timetables[2][1])
-					console.log("周三第三节课" + this.timetables[2][2])
+					//console.log("周三第二节课" + this.timetables[2][1])
+					//console.log("周三第三节课" + this.timetables[2][2])
 					// console.log(this.timetables)
 					
 					// this.timetables[0][1] = "软件工程"	
