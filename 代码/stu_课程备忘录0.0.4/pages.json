@@ -1,0 +1,289 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+
+		{
+			"path": "pages/Login/Login",
+			"style": {
+				"navigationBarTitleText": "课程备忘录"
+
+			}
+		},
+
+		{
+			"path": "pages/Register/Register",
+			"style": {
+				"navigationBarTitleText": "用户注册"
+
+			}
+		},
+		{
+			"path": "pages/Course/Course",
+			"style": {
+				"navigationBarTitleText": "我的课程"
+					// "navigationBarBackgroundColor":"#1E90FF",
+					,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+
+							{
+								"text": "+",
+								"type": "none",
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "30px"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/Task/Task",
+			"style": {
+				"navigationBarTitleText": "任务列表",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+
+							{
+								"text": "+",
+								"type": "none",
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "30px"
+							},
+							{
+								"text": "历史",
+								"type": "none",
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "13px",
+								"float": "left"
+
+							}
+
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/Alarm/Alarm",
+			"style": {
+				"navigationBarTitleText": "闹钟",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+
+							{
+								"text": "+",
+								"type": "none",
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "30px"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/I/I",
+			"style": {
+				"navigationBarTitleText": "我"
+
+			}
+		},
+		{
+			"path": "pages/EditCourse/EditCourse",
+			"style": {
+				"navigationBarTitleText": "添加课程"
+
+			}
+		},
+		{
+			"path": "pages/TaskDetail/TaskDetail",
+			"style": {
+				"navigationBarTitleText": "任务详情"
+
+			}
+		},
+		{
+			"path": "pages/EditTask/EditTask",
+			"style": {
+				"navigationBarTitleText": "添加任务"
+
+			}
+		},
+
+		{
+			"path": "pages/TeacherCourse/TeacherCourse",
+			"style": {
+				"navigationBarTitleText": "添加任务",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+				
+							{
+								"text": "+",
+								
+								"type": "none",
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "25px"
+							}
+						]
+					}
+				}
+			}
+		},
+
+		{
+			"path": "pages/Check/Check",
+			"style": {
+				"navigationBarTitleText": "审核",
+				"enablePullDownRefresh": false,				
+				"autoBackButton": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+
+							{
+								"text": "历史",
+								"type": "none",
+								
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "10px"
+							}
+						]
+					}
+				}
+
+			}
+
+		},
+		{
+			"path": "pages/TaskHis/TaskHis",
+			"style": {
+				"navigationBarTitleText": "历史任务",
+				"enablePullDownRefresh": false
+			}
+		
+		},
+		{
+			"path": "pages/EditAlarm/EditAlarm",
+			"style": {
+				"navigationBarTitleText": "编辑闹钟",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/CheckHis/CheckHis",
+			"style": {
+				"navigationBarTitleText": "审核历史",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/CheckDetail/CheckDetail",
+			"style": {
+				"navigationBarTitleText": "申请详情",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/AddAlarm/AddAlarm",
+			"style": {
+				"navigationBarTitleText": "添加闹钟",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/AlarmDetail/AlarmDetail",
+			"style": {
+				"navigationBarTitleText": "闹钟详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/EditI/EditI",
+			"style": {
+				"navigationBarTitleText": "编辑个人信息",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/TaskHis/TaskHis",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	    ,{
+            "path" : "pages/CourseTask/CourseTask",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/CourseTaskDetail/CourseTaskDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "课程备忘录",
+		"navigationBarBackgroundColor": "#228B22",
+		"backgroundColor": "#006400",
+		"enablePullDownRefresh": true //可下拉刷新
+	},
+	"tabBar": {
+		"selectedColor": "#006400",
+		"borderStyle": "white",
+		"list": [{
+				"text": "课程",
+				"pagePath": "pages/Course/Course",
+				"iconPath": "static/courses.png",
+				"selectedIconPath": "static/courses_after.png"
+			},
+
+			{
+				"text": "任务",
+				"pagePath": "pages/Task/Task",
+				"iconPath": "static/task.png",
+				"selectedIconPath": "static/task_after.png"
+			},
+			{
+				"text": "闹钟",
+				"pagePath": "pages/Alarm/Alarm",
+				"iconPath": "static/alarm.png",
+
+				"selectedIconPath": "static/alarm_after.png"
+			},
+			{
+				"text": "我",
+
+				"pagePath": "pages/I/I",
+				"iconPath": "static/I.png",
+				"selectedIconPath": "static/I_after.png"
+
+			}
+
+		]
+	}
+	
+}
