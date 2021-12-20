@@ -66,7 +66,7 @@
 				course_add: '',
 				idnum: '',
 				coursenum: '',
-				id:'学生'
+				id: '学生'
 			}
 		},
 		methods: {
@@ -139,78 +139,121 @@
 
 								},
 								// 成功
-								success(res) {
-									console.log("添加课程success");
-									uni.showToast({
-										title: '添加课程成功',
-										icon: 'none',
-										duration: 1000
-									});
 
-								},
 
+							}).then((res) => {
+								if (this.id == '学生') {
+									uniCloud.callFunction({
+										name: "add_course_stu",
+										data: {
+											course_name: this.course_name,
+											course_day: this.course_day,
+											start_time: this.start_time,
+											end_time: this.end_time,
+											course_add: this.course_add,
+											idnum: this.idnum,
+
+										},
+										// 成功
+										success(res) {
+											console.log("添加课程success");
+											uni.showToast({
+												title: '添加课程成功',
+												icon: 'none',
+												duration: 1000
+											});
+
+										},
+
+									})
+								}
+								if (this.id == '教师') {
+									uniCloud.callFunction({
+										name: "add_course_tea",
+										data: {
+											course_name: this.course_name,
+											course_day: this.course_day,
+											start_time: this.start_time,
+											end_time: this.end_time,
+											course_add: this.course_add,
+											idnum: this.idnum,
+
+										},
+										// 成功
+										success(res) {
+											console.log("添加课程success");
+											uni.showToast({
+												title: '添加课程成功',
+												icon: 'none',
+												duration: 1000
+											});
+
+										},
+
+									})
+								}
 							})
 						}
 					}
 				}
-				let j = 0;
-				for (let i = 0; i < 98000; i++) {
-					if (i == 97900) {
+				// let j = 0;
+				// for (let i = 0; i < 98000; i++) {
+				// 	if (i == 97900) {
 
 
-						if (this.id == '学生') {
-							uniCloud.callFunction({
-								name: "add_course_stu",
-								data: {
-									course_name: this.course_name,
-									course_day: this.course_day,
-									start_time: this.start_time,
-									end_time: this.end_time,
-									course_add: this.course_add,
-									idnum: this.idnum,
+				// 		if (this.id == '学生') {
+				// 			uniCloud.callFunction({
+				// 				name: "add_course_stu",
+				// 				data: {
+				// 					course_name: this.course_name,
+				// 					course_day: this.course_day,
+				// 					start_time: this.start_time,
+				// 					end_time: this.end_time,
+				// 					course_add: this.course_add,
+				// 					idnum: this.idnum,
 
-								},
-								// 成功
-								success(res) {
-									console.log("添加课程success");
-									uni.showToast({
-										title: '添加课程成功',
-										icon: 'none',
-										duration: 1000
-									});
+				// 				},
+				// 				// 成功
+				// 				success(res) {
+				// 					console.log("添加课程success");
+				// 					uni.showToast({
+				// 						title: '添加课程成功',
+				// 						icon: 'none',
+				// 						duration: 1000
+				// 					});
 
-								},
+				// 				},
 
-							})
-						}
-						if (this.id == '教师') {
-							uniCloud.callFunction({
-								name: "add_course_tea",
-								data: {
-									course_name: this.course_name,
-									course_day: this.course_day,
-									start_time: this.start_time,
-									end_time: this.end_time,
-									course_add: this.course_add,
-									idnum: this.idnum,
+				// 			})
+				// 		}
+				// 		if (this.id == '教师') {
+				// 			uniCloud.callFunction({
+				// 				name: "add_course_tea",
+				// 				data: {
+				// 					course_name: this.course_name,
+				// 					course_day: this.course_day,
+				// 					start_time: this.start_time,
+				// 					end_time: this.end_time,
+				// 					course_add: this.course_add,
+				// 					idnum: this.idnum,
 
-								},
-								// 成功
-								success(res) {
-									console.log("添加课程success");
-									uni.showToast({
-										title: '添加课程成功',
-										icon: 'none',
-										duration: 1000
-									});
+				// 				},
+				// 				// 成功
+				// 				success(res) {
+				// 					console.log("添加课程success");
+				// 					uni.showToast({
+				// 						title: '添加课程成功',
+				// 						icon: 'none',
+				// 						duration: 1000
+				// 					});
 
-								},
+				// 				},
 
-							})
-						}
+				// 			})
+				// 		}
 
-					}
-				}
+				// 	}
+				// }
 
 				// uniCloud.callFunction({
 				// 	name:"add_course",
