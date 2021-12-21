@@ -36,8 +36,8 @@
 		},
 
 		onLoad() {
-			//this.stu_idnum = "31901238"
-			this.stu_idnum = uni.getStorageSync("globalUser");
+			// this.stu_idnum = "31901238"
+			this.stu_idnum = uni.getStorageSync("globalUser")
 			this.loadCourse()
 		},
 		

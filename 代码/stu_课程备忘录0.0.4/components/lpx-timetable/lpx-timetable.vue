@@ -145,7 +145,7 @@
 				course_add:add
 
 			}
-		}).then(res=>{
+		}).then((res)=>{
 			const{result} =  res
 			console.log(result)
 			this.course_id = result.data[0]._id
