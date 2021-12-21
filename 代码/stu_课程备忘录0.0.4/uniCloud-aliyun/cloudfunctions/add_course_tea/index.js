@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
 			let result = await db.collection('course_tea').add({
 				course_id: which_course.data[0]._id,
 				course_name: event.course_name,
-				stu_idnum: event.idnum,
+				teacher_idnum: event.idnum,
 				course_day: event.course_day,
 				start_time: event.start_time,
 				end_time: event.end_time,
