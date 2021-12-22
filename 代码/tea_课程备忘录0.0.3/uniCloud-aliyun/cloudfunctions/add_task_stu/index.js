@@ -25,11 +25,6 @@ exports.main = async (event, context) => {
 				msg: '添加成功',
 				stu_len:$.size('$event.stu_list')
 			}
-	
-
-
-
-
-
+	6
 
 }
