@@ -83,7 +83,7 @@
 					name: 'taskdetailshow',
 					data: {
 						taskid: this.taskid,
-						
+						id:'学生'
 					}
 				}).then((res) => {
 					const {

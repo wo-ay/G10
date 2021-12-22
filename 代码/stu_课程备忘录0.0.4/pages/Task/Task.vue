@@ -163,6 +163,7 @@
 					name: 'taskshow',
 					data: {
 						idnum: this.idnum,
+						id:'学生',
 						// iffinish: '未完成',
 						ing:1
 					}
