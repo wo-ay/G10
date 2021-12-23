@@ -4,7 +4,7 @@
 		<view>
 			<uni-list>
 				<view v-for="(item,index) in tasklist" @click="todetail(item._id,rate_list[index])" @mouseover="confirm_task_id(item._id)"
-					@touchstart="touchStart" @touchend="touchEnd">
+					@touchstart="touchStart" @touchend="touchEnd" :class="rate_list[index]? '0' : '1'">
 					<uni-list-item :title="'@'+item.course_name+'-'+item.task_title" :note="item.task_ddl+'-'+item.task_content" :rightText="rate_list[index]+'%'">
 					</uni-list-item>
 					<!-- <button @click="confirm()">完成</button> -->
@@ -47,7 +47,8 @@
 				test: "",
 				startX: 0,
 				_id: "",
-				rate_list:[]
+				rate_list:[],
+				remind_list:[]
 			}
 		},
 		onLoad() {
@@ -179,7 +180,7 @@
 					
 					for(let j=0;j< this.tasklist.length;j++){
 						uniCloud.callFunction({
-							name:"get_rate_list",
+							name:"get_rate_list",/* 获取完成率和是否提醒的列表 */
 							data:{
 								task_id:this.tasklist[j]._id,
 								
@@ -190,6 +191,7 @@
 							} = res;
 							console.log(result.data)
 							this.rate_list[j]=100*result.data
+							this.remind_list[j]=result.if_remind
 						})
 					}
 					

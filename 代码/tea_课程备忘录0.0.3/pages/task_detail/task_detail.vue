@@ -28,7 +28,7 @@
 				<textarea :value="'任务内容   '+this.task_content" placeholder="任务内容"></textarea>
 			</view>
 			
-			<view id="submit">
+			<view id="submit" @click="remind()">
 				<button style="border-radius: 10rpx;">提醒</button>
 			</view>
 			
@@ -90,6 +90,14 @@
 			this.rate= option.rate
 		},
 		methods: {
+			remind: function(){
+				uniCloud.callFunction({
+					name:'remind',
+					data:{
+						task_id:this.taskid
+					}
+				})
+			},
 			
 			gettaskdetail:function(){
 				uniCloud.callFunction({
