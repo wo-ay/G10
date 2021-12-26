@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/checking/checking",
+    "pages/register/register",
+    "pages/login/login",
+    "pages/course/course",
+    "pages/task/task",
+    "pages/alarm/alarm",
+    "pages/I/I",
+    "pages/coursetask/coursetask",
+    "pages/coursetask/coursetask",
+    "pages/coursetask/coursetask",
+    "pages/login/login"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "课程备忘录",
+    "navigationBarBackgroundColor": "#228B22",
+    "backgroundColor": "#006400",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#006400",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "课程",
+        "pagePath": "pages/course/course",
+        "iconPath": "static/courses.png",
+        "selectedIconPath": "static/courses_after.png"
+      },
+      {
+        "text": "任务",
+        "pagePath": "pages/task/task",
+        "iconPath": "static/task.png",
+        "selectedIconPath": "static/task_after.png"
+      },
+      {
+        "text": "闹钟",
+        "pagePath": "pages/alarm/alarm",
+        "iconPath": "static/alarm.png",
+        "selectedIconPath": "static/alarm_after.png"
+      },
+      {
+        "text": "我",
+        "pagePath": "pages/I/I",
+        "iconPath": "static/I.png",
+        "selectedIconPath": "static/I_after.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
