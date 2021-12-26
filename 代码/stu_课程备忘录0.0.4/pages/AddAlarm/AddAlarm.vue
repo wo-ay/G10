@@ -45,10 +45,13 @@
 				alarm_title:"",
 				alarm_content:"",
 				dateTime : '',
-				user_id:"31901245"
+				user_id:"",
+				
 			}
 		},
-		
+		onLoad() {
+			this.user_id = uni.getStorageSync("globalUser")
+		},
 		methods: {
 			Time(val) {
 				//console.log(1)
