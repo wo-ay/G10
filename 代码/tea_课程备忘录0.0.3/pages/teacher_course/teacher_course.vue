@@ -76,11 +76,6 @@
 				for (var i = 0; i < this.courseList.length; i++) {
 					//this.searchCourse(this.courseList[i].course_id)
 					this.searchCourse(this.courseList[i].course_id)
-					// for (var j = this.start_time; j <= this.end_time; j++) {
-					// 	// console.log(j)
-					// 	//console.log(this.timetables[this.course_day][j])
-					// 	this.timetables[this.course_day][j] = this.course_name
-					// }
 
 				}
 
@@ -109,24 +104,19 @@
 					} else if (result.data[0].course_day == "周五") {
 						this.course_day = 4
 					}
-					console.log(this.course_name)
+					// console.log(this.course_name)
 					
-					console.log(this.course_day)
+					// console.log(this.course_day)
 					this.start_time = result.data[0].start_time					
 					this.end_time = result.data[0].end_time
 					this.course_add = result.data[0].course_add
-					console.log(this.start_time + "  " + this.end_time)
+					// console.log(this.start_time + "  " + this.end_time)
 					for (var j = this.start_time; j <= this.end_time; j++) {
 						//this.timetables[this.course_day][j - 1]= this.course_name
 						this.$set(this.timetables[this.course_day],j - 1,this.course_name +"@"+this.course_add)
 					}
-					//console.log("周三第二节课" + this.timetables[2][1])
-					//console.log("周三第三节课" + this.timetables[2][2])
-					// console.log(this.timetables)
-					
-					// this.timetables[0][1] = "软件工程"	
-					//this.$set(this.timetables[0],1,"软件工程")
-					console.log(this.timetables[0][1])	
+
+					// console.log(this.timetables[0][1])	
 				})
 			}
 		},

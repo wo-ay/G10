@@ -11,7 +11,8 @@
           <view class="time">{{ item.name }}</view><!-- 显示每节课的上课时间 -->
         </view>
       </view>
-
+		
+		
       <view class="course-container">
         <view class="week" v-for="(week, weekIndex) in courseData" :key="weekIndex">
           <view class="courseList" v-for="(course, courseIndex) in week" :key="courseIndex">
@@ -119,6 +120,9 @@
     },
     methods: {
       handleCourseClick:function(course, weekIndex, courseIndex) {
+		  
+		  //weekIndex礼拜几，course课程，courseIndex第几节课开始
+		  
         const data = {
           index: courseIndex + 1,
           length: course.length,
@@ -149,8 +153,8 @@
 			this.course_id = result.data[0]._id
 			console.log(this.course_id)
 			uni.navigateTo({
-			url:'/pages/CourseTask/CourseTask?_id=' + this.course_id
-			// url:'/pages/course_task/course_task?_id=61b6079bb804f80001909fcc'// + this.course_id
+				// url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=' + this.course_id
+				url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=61b6079bb804f80001909fcc'
 			})
 			
 		})

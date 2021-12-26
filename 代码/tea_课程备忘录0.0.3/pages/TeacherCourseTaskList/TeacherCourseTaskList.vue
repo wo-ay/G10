@@ -1,0 +1,59 @@
+<template>
+	<view>
+		<uni-list>
+			<uni-list>
+				<view v-for="item in course_task_list" @click="getTeacherCourseTaskDetail(item._id)">
+					<uni-list-item :title = "'@'+item.course_name+'：'+item.task_title" :note="'截止时间：' + item.task_ddl" show-arrow="true" ></uni-list-item>
+				</view>
+			</uni-list>
+		</uni-list>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				course_id:"",
+				teacher_id:"",
+				course_task_list:[]
+			}
+		},
+		
+		onLoad(option) {
+			this.teacher_id = uni.getStorageSync("globalUser")
+			this.course_id = option._id
+			this.getCourseTaskList();
+		},
+		onShow(){
+			this.getCourseTaskList();
+		},
+		methods: {
+			getCourseTaskList(){
+				console.log(this.course_id)
+				console.log(this.teacher_id)
+				uniCloud.callFunction({
+					name:"getTeacherCourseTaskList",
+					data:{
+						course_id:this.course_id,
+						teacher_id:this.teacher_id
+					}
+				}).then((res)=>{
+					const{result} = res
+					this.course_task_list = result.data
+				})
+			},
+			getTeacherCourseTaskDetail(_id) {
+				this.$emit("click",event)
+				uni.navigateTo({
+					url:"../task_detail/task_detail?taskid=" + _id
+				})
+			}
+			
+		}
+	}
+</script>
+
+<style>
+
+</style>
