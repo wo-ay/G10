@@ -117,7 +117,13 @@
 
 			}
 		},
-
+		{
+			"path": "pages/editcoursetask/editcoursetask",
+			"style": {
+				"navigationBarTitleText": "添加课程任务"
+		
+			}
+		},
 		{
 			"path": "pages/teacher_course/teacher_course",
 			"style": {
@@ -236,8 +242,23 @@
             "path" : "pages/TeacherCourseTaskList/TeacherCourseTaskList",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "课程任务",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+				
+							{
+								"text": "+",
+								"type": "none",
+								
+								"color": "#FFFFFF",
+								"background": "#000000",
+								"fontSize": "20px"
+							}
+						]
+					}
+				}
             }
             
         }

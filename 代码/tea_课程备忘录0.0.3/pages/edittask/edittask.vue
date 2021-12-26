@@ -24,7 +24,7 @@
 			<view class="task" id="task_title">
 				<textarea v-model="task_title" placeholder="请输入任务" class="text"></textarea>
 			</view>
-			<long-date type="between" getDayNum="10" :openStatus="true" startTime="2021-12-03" endTime="2022-02-01"
+			<long-date type="day" getDayNum="10" :openStatus="true" startTime="2021-12-03" endTime="2022-02-01"
 				chooesMaxDay="8" @select="Time">
 			</long-date>
 			<view class="task" id="task_content">

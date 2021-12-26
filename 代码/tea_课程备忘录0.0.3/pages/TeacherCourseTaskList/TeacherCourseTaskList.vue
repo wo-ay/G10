@@ -28,6 +28,17 @@
 		onShow(){
 			this.getCourseTaskList();
 		},
+		onNavigationBarButtonTap: function(e) {
+			console.log(e.text); //提交
+			console.log(e.fontSize); //16px
+			if (e.text == "+") {
+				uni.navigateTo({
+					url: '../editcoursetask/editcoursetask?courseid='+this.course_id
+				})
+			}
+			
+		
+		},
 		methods: {
 			getCourseTaskList(){
 				console.log(this.course_id)

@@ -153,8 +153,8 @@
 			this.course_id = result.data[0]._id
 			console.log(this.course_id)
 			uni.navigateTo({
-				// url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=' + this.course_id
-				url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=61b6079bb804f80001909fcc'
+				url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=' + this.course_id
+				//url:'/pages/TeacherCourseTaskList/TeacherCourseTaskList?_id=61b6079bb804f80001909fcc'
 			})
 			
 		})
