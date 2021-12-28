@@ -151,7 +151,7 @@
 			"path": "pages/check/check",
 			"style": {
 				"navigationBarTitleText": "审核",
-				"enablePullDownRefresh": false,				
+				"enablePullDownRefresh": true,				
 				"autoBackButton": false
 				// "app-plus": {
 				// 	"titleNView": {
@@ -176,7 +176,7 @@
 			"path": "pages/task_his/task_his",
 			"style": {
 				"navigationBarTitleText": "历史任务",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 		
 		},
@@ -191,7 +191,7 @@
 			"path": "pages/check_his/check_his",
 			"style": {
 				"navigationBarTitleText": "审核历史",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true
 			}
 
 		}, {

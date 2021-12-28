@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view class = "page_name">
+		<!-- <view class = "page_name">
 			<p>任务详情</p>
-		</view>
+		</view> -->
 		<view class = "task_title">
 			<p>{{task_title}}</p>
 		</view>

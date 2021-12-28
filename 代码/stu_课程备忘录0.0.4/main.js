@@ -7,7 +7,7 @@ import App from './App'
 
 
 
-import 'asset/iconfont/iconfont.js'
+// import 'asset/iconfont/iconfont.js'
 
 import Vue from 'vue'
 Vue.config.productionTip = false

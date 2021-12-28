@@ -37,7 +37,7 @@
 			
 			toDetail(_id){
 				//监听
-				this.$emit("click",event);
+				// this.$emit("click",event);
 				uni.navigateTo({
 					url:'../AlarmDetail/AlarmDetail?_id=' + _id
 					//url:'../alarm_detail/alarm_detail?alarm_title=' + i + '&alarm_content=' + c

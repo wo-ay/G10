@@ -3,8 +3,7 @@
 
 		<view>
 			<uni-list>
-				<view v-for="item in tasklist" @click="todetail(item._id)" @mouseover="confirm_task_id(item._id)"
-					@touchstart="touchStart" @touchend="touchEnd">
+				<view v-for="item in tasklist" @click="todetail(item._id)" >
 					<uni-list-item :title="'@'+item.task_course+'-'+item.task_title" :note="item.task_content" :rightText="item.iffinish">
 					</uni-list-item>
 					<!-- <button @click="confirm()">完成</button> -->

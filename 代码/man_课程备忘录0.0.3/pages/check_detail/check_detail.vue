@@ -218,7 +218,7 @@
 				
 				
 				
-				uni.navigateTo({
+				uni.switchTab({
 					url:'../check/check'
 				})
 				
@@ -230,7 +230,7 @@
 						idnum: this.idnum
 					}
 				})
-				uni.navigateTo({
+				uni.switchTab({
 					url:'../check/check'
 				})
 			}
@@ -256,7 +256,7 @@
 	}
 
 	.detailvalue {
-		text-decoration: underline;
+		/* text-decoration: underline; */
 		color: #006400;
 	}
 

@@ -52,7 +52,7 @@
 			},
 			
 			loadCourseTaskDetail(_id) {
-				this.$emit("click",event)
+				// this.$emit("click",event)
 				uni.navigateTo({
 					url:'../CourseTaskDetail/CourseTaskDetail?_id=' + _id
 				})

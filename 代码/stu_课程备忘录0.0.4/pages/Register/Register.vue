@@ -178,9 +178,9 @@
 							})
 						},
 						//失败
-						fail(e) {
-							console.log(e);
-						}
+						// fail(e) {
+						// 	console.log(e);
+						// }
 					})
 				}
 				// uniCloud.callFunction({

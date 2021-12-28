@@ -54,11 +54,11 @@
 		
 		onLoad(option) {
 			this._id = option._id
-			this.getAlarmDetail(option);
+			this.getAlarmDetail();
 		},
 		
 		methods: {
-			getAlarmDetail(option) {
+			getAlarmDetail() {
 				uniCloud.callFunction({
 					name:'getAlarmDetail',
 					data:{
@@ -66,8 +66,8 @@
 					}
 				}).then((res)=>{
 					const {result} = res
-					this.Alarm_title = result.data[0].Alarm_title
-					this.Alarm_content = result.data[0].Alarm_content
+					this.Alarm_title = result.data[0].alarm_title
+					this.Alarm_content = result.data[0].alarm_content
 					console.log(this.Alarm_title)
 				})
 			},

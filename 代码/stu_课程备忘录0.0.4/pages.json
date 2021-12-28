@@ -220,7 +220,7 @@
 		}, {
 			"path": "pages/TaskHis/TaskHis",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "任务历史",
 				"enablePullDownRefresh": false
 			}
 
@@ -229,7 +229,7 @@
             "path" : "pages/CourseTask/CourseTask",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "课程任务",
                 "enablePullDownRefresh": false
             }
             
@@ -238,7 +238,7 @@
             "path" : "pages/CourseTaskDetail/CourseTaskDetail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "任务详情",
                 "enablePullDownRefresh": false
             }
             

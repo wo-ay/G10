@@ -1,26 +1,22 @@
-<script src="http://at.alicdn.com/t/font_2971072_04vv2tcbr43c.js">
+
 </script>
 
 <template>
 
 	<view>
 		<view class="content">
-			
+			<link rel="stylesheet" href="//at.alicdn.com/t/font_2971072_u0os1dwc1wk.css">
 
 
 			<view class="detail">
 
-				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#icon-shenfenxuanze"></use>
-				</svg>
+				<i class="iconfont icon-shenfen" style="margin-top: 10rpx;margin-right: 10px;"></i>
 
 			
 				<view class="detailvalue">身份：{{id}}</view>
 			</view>
 			<view class="detail">
-				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#icon-geren1"></use>
-				</svg>
+				<i class="iconfont icon-geren1" style="margin-top: 10rpx;margin-right: 10px;"></i>
 				
 				<view class="detailvalue">
 					<view class="detailvalue">姓名：{{name}}</view>
@@ -28,26 +24,20 @@
 				</view>
 			</view>
 			<view class="detail">
-				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#icon-shenfen"></use>
-				</svg>
+				<i class="iconfont icon-gonghao" style="margin-top: 10rpx;margin-right: 10px;"></i>
 				
 				<view class="detailvalue">学号：{{idnum}}</view>
 			</view>
 			<view class="detail">
-				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#icon-shouji1"></use>
-				</svg>
+				<i class="iconfont icon-shouji1" style="margin-top: 10rpx;margin-right: 10px;"></i>
 				
 				<view class="detailvalue">手机：{{tel}}
 				</view>
 			</view>
 			<view class="detail">
-				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#icon-youxiang3"></use>
-				</svg>
+				<i class="iconfont icon-youxiang3" style="margin-top: 10rpx;margin-right: 10px;"></i>
 				
-				<view class="detailvalue">邮箱：{{email}}</view>
+				<view class="detailvalue" >邮箱：{{email}}</view>
 			</view>
 		</view>
 
@@ -77,6 +67,16 @@
 			console.log(this.idnum)
 			this.get_stu_info()
 		},
+		onPullDownRefresh() {
+			//监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+			console.log('refresh');
+			this.get_stu_info()
+		
+			setTimeout(function() {
+				uni.stopPullDownRefresh(); //停止下拉刷新动画
+			}, 1000);
+		},
+		
 		methods: {
 			edit: function() {
 				uni.navigateTo({
@@ -119,6 +119,7 @@
 		fill: currentColor;
 		overflow: hidden;
 		margin-right: 5px;
+		
 	}
 
 	.content {
