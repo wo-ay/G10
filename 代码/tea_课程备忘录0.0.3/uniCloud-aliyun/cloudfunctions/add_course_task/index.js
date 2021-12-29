@@ -13,7 +13,8 @@ exports.main = async (event, context) => {
 		task_title: event.task_title,
 		task_ddl: event.task_ddl,
 		task_content: event.task_content,
-		course_name: event.course_name
+		course_name: event.course_name,
+		if_remind:0
 	})
 	
 

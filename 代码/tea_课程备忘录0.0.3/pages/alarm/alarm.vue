@@ -11,6 +11,9 @@
 					</view>
 				</uni-list>	
 			</uni-list>
+			<view v-if="list.length <= 0 " class="tip" style="width: 30%; margin: 120rpx auto;">
+				暂无闹钟！
+			</view>
 		</view>
 	</view>
 </template>

@@ -7,6 +7,10 @@
 				</view>
 			</uni-list>
 		</uni-list>
+		<view v-if="course_task_list.length <= 0 " class="tip" style="width: 30%; margin: 120rpx auto;">
+			暂无课程任务！
+		</view>
+		
 	</view>
 </template>
 
@@ -66,5 +70,8 @@
 </script>
 
 <style>
-
+	/* .tip{
+		width: 30%; 
+		margin: 120rpx auto;
+	} */
 </style>

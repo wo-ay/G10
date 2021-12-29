@@ -77,10 +77,15 @@
 					},
 					success(res) {
 						uni.showToast({
-							title:'任务完成',
-							icon: 'none',
-							duration:1000
-						})
+							title: "任务完成!",
+							icon: "success",
+							duration: 2000
+						});
+						setTimeout(function() {
+							uni.navigateTo({
+								url:'../CourseTask/CourseTask'
+							})
+						}, 2000);
 					}
 				})
 			}

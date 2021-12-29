@@ -96,6 +96,20 @@
 					data:{
 						task_id:this.taskid
 					}
+				}).then((res) => {
+					const {
+						result
+					} = res
+					uni.showToast({
+						title: "任务提醒成功",
+						icon: "success",
+						duration: 2000
+					});
+					setTimeout(function() {
+						uni.navigateTo({
+							url:'../TeacherCourseTaskList/TeacherCourseTaskList'
+						})
+					}, 2000);
 				})
 			},
 			

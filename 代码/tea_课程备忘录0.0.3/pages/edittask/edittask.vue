@@ -254,6 +254,7 @@
 											stu_idnum: this.stu_list[t].stu_idnum,
 											task_id: this.task_id,
 											task_title: this.task_title,
+											course_id: this.course_id
 										}
 									})
 								}

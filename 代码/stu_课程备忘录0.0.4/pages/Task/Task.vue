@@ -5,14 +5,17 @@
 			<uni-list>
 				<view v-for="item in tasklist" @click="todetail(item._id)" @mouseover="confirm_task_id(item._id)"
 					@touchstart="touchStart" @touchend="touchEnd">
-					<uni-list-item :title="'@'+item.task_course+'-'+item.task_title" :note="item.task_ddl+'-'+item.task_content" :rightText="item.iffinish">
+					<uni-list-item :title="'@'+item.task_course+'-'+item.task_title"
+						:note="item.task_ddl+'-'+item.task_content" :rightText="item.iffinish" >
 					</uni-list-item>
 					<!-- <button @click="confirm()">完成</button> -->
 				</view>
-				
+
 			</uni-list>
 		</view>
-
+		<view v-if="tasklist.length <= 0 " class="tip" style="width: 22%; margin: 120rpx auto;">
+			暂无任务！
+		</view>
 	</view>
 </template>
 
@@ -163,9 +166,9 @@
 					name: 'taskshow',
 					data: {
 						idnum: this.idnum,
-						id:'学生',
+						id: '学生',
 						// iffinish: '未完成',
-						ing:1
+						ing: 1
 					}
 				}).then((res) => {
 					const {

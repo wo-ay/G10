@@ -5,14 +5,17 @@
 			<uni-list>
 				<view v-for="item in tasklist" @click="todetail(item._id)" @mouseover="confirm_task_id(item._id)"
 					@touchstart="touchStart" @touchend="touchEnd">
-					<uni-list-item :title="'@'+item.task_course+'-'+item.task_title" :note="item.task_content" :rightText="item.iffinish">
+					<uni-list-item :title="'@'+item.task_course+'-'+item.task_title" :note="item.task_content"
+						:rightText="item.iffinish">
 					</uni-list-item>
 					<!-- <button @click="confirm()">完成</button> -->
 				</view>
 				<view>{{_id}}</view>
 			</uni-list>
 		</view>
-
+		<view v-if="tasklist.length <= 0 " class="tip" style="width: 30%; margin: 120rpx auto;">
+			暂无历史任务！
+		</view>
 	</view>
 </template>
 
@@ -72,7 +75,7 @@
 			 * 触摸开始
 			 * @param {Object} e
 			 */
-			
+
 			confirm_task_id: function(id) {
 				// console.log(data)
 				// console.log(id);
@@ -98,7 +101,7 @@
 					name: 'taskshow',
 					data: {
 						idnum: this.idnum,
-						ing:0
+						ing: 0
 						// iffinish:"已完成"
 					}
 				}).then((res) => {
@@ -115,7 +118,7 @@
 				console.log("1")
 			}
 		},
-		
+
 	}
 </script>
 

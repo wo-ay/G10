@@ -8,23 +8,23 @@ exports.main = async (event, context) => {
 
 
 
-			
-				let res = await collection.add({
+
+	let res = await collection.add({
+
+		course_id: event.course_id,
+
+		task_id: event.task_id,
+		task_title: event.task_title,
+		stu_idnum: event.stu_idnum,
+		iffinish: "0",
+	})
 
 
-
-					task_id: event.task_id,
-					task_title:event.task_title,
-					stu_idnum: event.stu_idnum,
-					iffinish: "0",
-				})
-
-			
-			return {
-				code: 200,
-				msg: '添加成功',
-				stu_len:$.size('$event.stu_list')
-			}
+	return {
+		code: 200,
+		msg: '添加成功',
+		stu_len: $.size('$event.stu_list')
+	}
 	6
 
 }

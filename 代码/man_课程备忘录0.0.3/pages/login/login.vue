@@ -14,7 +14,7 @@
 			<input class="zai-input" placeholder-class placeholder="请输入管理员账号" v-model="inputidnum" />
 			<input class="zai-input" placeholder-class password placeholder="请输入密码" v-model="inputpwd" />
 
-			<view class="zai-label-forget">忘记密码？</view>
+			<!-- <view class="zai-label-forget">忘记密码？</view> -->
 			<button class="zai-btn" @click="login()">立即登录</button>
 			<navigator url="../register/register" hover-class="none" class="zai-label">还没有账号？点此注册.</navigator>
 

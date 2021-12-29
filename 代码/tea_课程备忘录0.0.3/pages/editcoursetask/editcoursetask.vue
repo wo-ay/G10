@@ -176,7 +176,7 @@
 
 							// console.log(result.task_id);
 							uni.showToast({
-								title: '添加任务成功',
+								title: '添加课程任务成功',
 								icon: 'none',
 								duration: 1000
 							});
@@ -213,6 +213,7 @@
 										uniCloud.callFunction({
 											name: "add_task_stu",
 											data: {
+												course_id:this.course_id,
 												stu_idnum: this.stu_list[t].stu_idnum,
 												task_id: this.task_id,
 												task_title: this.task_title,

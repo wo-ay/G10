@@ -282,15 +282,10 @@ var render = function() {
             }
           }),
           _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-            [_vm._v("忘记密码？")]
-          ),
-          _c(
             "v-uni-button",
             {
-              staticClass: _vm._$g(6, "sc"),
-              attrs: { _i: 6 },
+              staticClass: _vm._$g(5, "sc"),
+              attrs: { _i: 5 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -302,11 +297,11 @@ var render = function() {
           _c(
             "v-uni-navigator",
             {
-              staticClass: _vm._$g(7, "sc"),
+              staticClass: _vm._$g(6, "sc"),
               attrs: {
                 url: "../register/register",
                 "hover-class": "none",
-                _i: 7
+                _i: 6
               }
             },
             [_vm._v("还没有账号？点此注册.")]

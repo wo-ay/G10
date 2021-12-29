@@ -12,7 +12,9 @@
 				
 			</uni-list>
 		</view>
-
+		<view v-if="tasklist.length <= 0 " class="tip" style="width: 30%; margin: 120rpx auto;">
+			暂无任务！
+		</view>
 	</view>
 </template>
 
