@@ -77,7 +77,8 @@
 				task_ddl:"",
 				task_title:"",
 				task_content:"",
-				rate:""
+				rate:"",
+				_id:''
 				
 			}
 		},
@@ -85,7 +86,8 @@
 		onLoad(option) {
 			this.taskid = option.taskid;
 			// console.log(option)
-			console.log(option.taskid)
+			this.course_id=option.course_id
+			console.log(option.course_id)
 			this.gettaskdetail();
 			this.rate= option.rate
 		},
@@ -106,9 +108,7 @@
 						duration: 2000
 					});
 					setTimeout(function() {
-						uni.navigateTo({
-							url:'../TeacherCourseTaskList/TeacherCourseTaskList'
-						})
+						uni.navigateBack();
 					}, 2000);
 				})
 			},
@@ -131,7 +131,7 @@
 					this.task_title = result.data[0].task_title
 					this.task_content = result.data[0].task_content
 					
-					console.log(this.id)
+					// console.log(this.id)
 					// this.name=result.data.name
 					// this.tel=result.data.tel
 					// this.email=result.data.email

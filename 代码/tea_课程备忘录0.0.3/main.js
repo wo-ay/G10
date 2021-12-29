@@ -4,7 +4,7 @@ import App from './App'
 
 // #ifndef VUE3
 
-import 'asset/iconfont/iconfont.js'
+// import 'asset/iconfont/iconfont.js'
 
 
 import Vue from 'vue'
