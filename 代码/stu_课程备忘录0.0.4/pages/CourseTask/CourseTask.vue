@@ -34,7 +34,15 @@
 			// this.course_id = '61b6079bb804f80001909fcc'
 			this.getCourseTaskList();
 		},
-
+		onPullDownRefresh() {
+			//监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+			console.log('refresh');
+			this.getCourseTaskList();
+		
+			setTimeout(function() {
+				uni.stopPullDownRefresh(); //停止下拉刷新动画
+			}, 1000);
+		},
 		// onShow() {
 		// 	// this.course_id = option._id
 		// 	this.getCourseTaskList();
@@ -51,7 +59,7 @@
 						stu_id: uni.getStorageSync("globalUser")
 					}
 				}).then((res) => {
-
+					this.course_task_list=[]
 					const {//查到任务列表
 						result
 					} = res;

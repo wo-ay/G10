@@ -230,7 +230,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "课程任务",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -267,13 +267,13 @@
 				"iconPath": "static/task.png",
 				"selectedIconPath": "static/task_after.png"
 			},
-			{
-				"text": "闹钟",
-				"pagePath": "pages/Alarm/Alarm",
-				"iconPath": "static/alarm.png",
+			// {
+			// 	"text": "闹钟",
+			// 	"pagePath": "pages/Alarm/Alarm",
+			// 	"iconPath": "static/alarm.png",
 
-				"selectedIconPath": "static/alarm_after.png"
-			},
+			// 	"selectedIconPath": "static/alarm_after.png"
+			// },
 			{
 				"text": "我",
 

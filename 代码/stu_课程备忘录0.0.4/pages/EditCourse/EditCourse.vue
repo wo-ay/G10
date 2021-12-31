@@ -54,7 +54,18 @@
 		data() {
 			return {
 				datalist: [],
-				timelist: [],
+				timetables: [
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+					['', '', '', '', '', '', '', '', '', '', '', ''],
+				],
+				courseList: [
+
+				],
 				//模拟初始数据
 				tval: "value2",
 				// arrays: ['---请选择---','教师','学生','管理员'],
@@ -66,10 +77,106 @@
 				course_add: '',
 				idnum: '',
 				coursenum: '',
-				id: '学生'
+				id: '教师',
+
+				day: 0,
+				tea_idnum: '',
+				conflict: 0,
+				old_course_name: '',
+				old_course_day: '',
+				old_start_time: '',
+				old_end_time: '',
+				theCourse: [],
 			}
 		},
+		onLoad() {
+			//this.stu_idnum = "31901238"
+			this.tea_idnum = uni.getStorageSync("globalUser");
+			console.log(this.tea_idnum + 'test')
+			this.loadCourse()
+		},
+
+		onShow() {
+			// this.tea_idnum = uni.getStorageSync("globalUser");
+			this.loadCourse()
+		},
 		methods: {
+			loadCourse() {
+				uniCloud.callFunction({
+					name: "loadStuCourse",
+					data: {
+						stu_idnum: this.tea_idnum
+					}
+				}).then((res) => {
+					const {
+						result
+					} = res
+					this.courseList = result.data
+					this.updateTimeTables()
+				})
+			},
+
+			updateTimeTables() {
+				//for循环根据每一门课的_id到course中查找具体的课程详细,并改变timetables
+				for (var i = 0; i < this.courseList.length; i++) {
+					//this.searchCourse(this.courseList[i].course_id)
+					this.searchCourse(this.courseList[i].course_id)
+					// for (var j = this.start_time; j <= this.end_time; j++) {
+					// 	// console.log(j)
+					// 	//console.log(this.timetables[this.course_day][j])
+					// 	this.timetables[this.course_day][j] = this.course_name
+					// }
+
+				}
+
+			},
+
+			searchCourse(course_id) {
+				uniCloud.callFunction({
+					name: 'searchCourse',
+					data: {
+						course_id: course_id
+					}
+				}).then((res) => {
+					const {
+						result
+					} = res
+					this.theCourse = result.data
+					//该课程的详细信息
+					this.old_course_name = result.data[0].course_name
+
+					if (result.data[0].course_day == "周一") {
+						this.old_course_day = 0
+					} else if (result.data[0].course_day == "周二") {
+						this.old_course_day = 1
+					} else if (result.data[0].course_day == "周三") {
+						this.old_course_day = 2
+					} else if (result.data[0].course_day == "周四") {
+						this.old_course_day = 3
+					} else if (result.data[0].course_day == "周五") {
+						this.old_course_day = 4
+					}
+					console.log(this.old_course_name)
+
+					console.log(this.old_course_day)
+					this.old_start_time = result.data[0].start_time
+					this.old_end_time = result.data[0].end_time
+					this.old_course_add = result.data[0].course_add
+					console.log(this.old_start_time + "  " + this.old_end_time)
+					for (var j = this.old_start_time; j <= this.old_end_time; j++) {
+						//this.timetables[this.course_day][j - 1]= this.course_name
+						this.$set(this.timetables[this.old_course_day], j - 1, this.old_course_name + "@" + this
+							.old_course_add)
+					}
+					console.log("周2第1节课" + this.timetables[1][1])
+					//console.log("周三第三节课" + this.timetables[2][2])
+					// console.log(this.timetables)
+
+					// this.timetables[0][1] = "软件工程"	
+					//this.$set(this.timetables[0],1,"软件工程")
+					console.log(this.timetables[0][1])
+				})
+			},
 			selectdayitem(index, item) {
 				// console.log(item)
 				if (index >= 0) {
@@ -98,163 +205,192 @@
 				}
 			},
 			add_course: function() {
+				if (this.course_name == '') {
+					uni.showToast({
+						title: '请输入课程名',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
+				if (this.course_day == '') {
+					uni.showToast({
+						title: '请选择课程所在日',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
+				if (this.start_time == '') {
+					uni.showToast({
+						title: '请选择开始节数',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
+				if (this.end_time == '') {
+					uni.showToast({
+						title: '请选择结束节数',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
+				if (parseInt(this.end_time) < parseInt(this.start_time)) {
+					uni.showToast({
+						title: '结束节数应较大',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
+				if (this.course_add == '') {
+					uni.showToast({
+						title: '请输入课程地点',
+						icon: 'none',
+						duration: 1000
+					});
+					return false;
+				}
 
-				uniCloud.callFunction({
-					name: "course_exist",
-					data: {
-						course_name: this.course_name,
-						course_day: this.course_day,
-						start_time: this.start_time,
-						end_time: this.end_time,
-						course_add: this.course_add,
-						idnum: this.idnum,
-						id: ''
-					},
-				}).then((res) => {
-					const {
-						result
-					} = res
-					// console.log(result.coursenum )
-					// this.info=result.data
-					this.coursenum = result.coursenum
+				this.conflict = 0
+				if (this.course_day == '周一') {
+					this.day = 1;
+				}
+				if (this.course_day == '周二') {
+					this.day = 2;
+				}
+				if (this.course_day == '周三') {
+					this.day = 3;
+				}
+				if (this.course_day == '周四') {
+					this.day = 4;
+				}
+				if (this.course_day == '周五') {
+					this.day = 5;
+				}
+				if (this.course_day == '周六') {
+					this.day = 6;
+				}
+				if (this.course_day == '周日') {
+					this.day = 7;
+				}
 
-					console.log(this.coursenum)
+				console.log("课程日---" + this.day)
+				console.log("开始---" + parseInt(this.start_time))
+				console.log("结束---" + parseInt(this.end_time))
+				// console.log("test-timetable"+this.timetables[1][1])
+				for (let i = parseInt(this.start_time); i < parseInt(this.end_time); i++) {
+					if (this.timetables[this.day-1][i - 1] != '') {
 
-				})
+						this.conflict = 1;
+						console.log("课程冲突")
 
-				for (let t = 0; t < 8000; t++) {
-					if (t == 90) {
+					}
+					// if(i==this.end_time-'0'-1){
+					// 	if(this.conflict == 1){
+
+					// 	}
+					// }
+				}
+
+				if (this.conflict == 1) {
+					uni.showToast({
+						title: '课程时间冲突',
+						icon: 'error'
+					})
+				} else {
 
 
-						if (this.coursenum == 0) {
+					uniCloud.callFunction({
+						name: "course_exist",
+						data: {
+							course_name: this.course_name,
+							course_day: this.course_day,
+							start_time: this.start_time,
+							end_time: this.end_time,
+							course_add: this.course_add,
+							// idnum: this.idnum,
+							// id: ''
+						},
+					}).then((res) => {
+						const {
+							result
+						} = res
+						// console.log(result.coursenum )
+						// this.info=result.data
+						this.coursenum = result.coursenum
+
+						console.log(this.coursenum)
+
+					})
+
+
+
+
+					if (this.coursenum == 0) {
+						uniCloud.callFunction({
+							name: "add_course",
+							data: {
+								course_name: this.course_name,
+								course_day: this.course_day,
+								start_time: this.start_time,
+								end_time: this.end_time,
+								course_add: this.course_add,
+								
+
+							},
+							// 成功
+							success(res) {
+								console.log("添加课程success");
+								uni.showToast({
+									title: "添加课程成功",
+									icon: "success",
+									duration: 2000
+								});
+								setTimeout(function() {
+									uni.navigateBack()
+								}, 2000);
+
+							},
+
+						})
+					}
+
+
+					let j = 0;
+					for (let i = 0; i < 98000; i++) {
+						if (i == 97900) {
+
+
+
+							// if (this.id == '教师') {
 							uniCloud.callFunction({
-								name: "add_course",
+								name: "add_course_stu",
 								data: {
 									course_name: this.course_name,
 									course_day: this.course_day,
 									start_time: this.start_time,
 									end_time: this.end_time,
 									course_add: this.course_add,
-									idnum: this.idnum,
+									idnum: this.tea_idnum,
 
 								},
 								// 成功
+								success(res) {
+									console.log("添加课程success");
+									
 
 
-							}).then((res) => {
-								if (this.id == '学生') {
-									uniCloud.callFunction({
-										name: "add_course_stu",
-										data: {
-											course_name: this.course_name,
-											course_day: this.course_day,
-											start_time: this.start_time,
-											end_time: this.end_time,
-											course_add: this.course_add,
-											idnum: this.idnum,
+								},
 
-										},
-										// 成功
-										success(res) {
-											console.log("添加课程success");
-											uni.showToast({
-												title: '添加课程成功',
-												icon: 'none',
-												duration: 1000
-											});
-
-										},
-
-									})
-								}
-								if (this.id == '教师') {
-									uniCloud.callFunction({
-										name: "add_course_tea",
-										data: {
-											course_name: this.course_name,
-											course_day: this.course_day,
-											start_time: this.start_time,
-											end_time: this.end_time,
-											course_add: this.course_add,
-											idnum: this.idnum,
-
-										},
-										// 成功
-										success(res) {
-											console.log("添加课程success");
-											uni.showToast({
-												title: '添加课程成功',
-												icon: 'none',
-												duration: 1000
-											});
-
-										},
-
-									})
-								}
 							})
+							// }
+
 						}
 					}
 				}
-				// let j = 0;
-				// for (let i = 0; i < 98000; i++) {
-				// 	if (i == 97900) {
-
-
-				// 		if (this.id == '学生') {
-				// 			uniCloud.callFunction({
-				// 				name: "add_course_stu",
-				// 				data: {
-				// 					course_name: this.course_name,
-				// 					course_day: this.course_day,
-				// 					start_time: this.start_time,
-				// 					end_time: this.end_time,
-				// 					course_add: this.course_add,
-				// 					idnum: this.idnum,
-
-				// 				},
-				// 				// 成功
-				// 				success(res) {
-				// 					console.log("添加课程success");
-				// 					uni.showToast({
-				// 						title: '添加课程成功',
-				// 						icon: 'none',
-				// 						duration: 1000
-				// 					});
-
-				// 				},
-
-				// 			})
-				// 		}
-				// 		if (this.id == '教师') {
-				// 			uniCloud.callFunction({
-				// 				name: "add_course_tea",
-				// 				data: {
-				// 					course_name: this.course_name,
-				// 					course_day: this.course_day,
-				// 					start_time: this.start_time,
-				// 					end_time: this.end_time,
-				// 					course_add: this.course_add,
-				// 					idnum: this.idnum,
-
-				// 				},
-				// 				// 成功
-				// 				success(res) {
-				// 					console.log("添加课程success");
-				// 					uni.showToast({
-				// 						title: '添加课程成功',
-				// 						icon: 'none',
-				// 						duration: 1000
-				// 					});
-
-				// 				},
-
-				// 			})
-				// 		}
-
-				// 	}
-				// }
-
 				// uniCloud.callFunction({
 				// 	name:"add_course",
 				// 	data: {
@@ -294,11 +430,11 @@
 		// 	});
 		// 	return true
 		// },
-		onLoad(option) {
-			this.idnum = uni.getStorageSync("globalUser");
-			console.log(this.idnum)
-			// this.id = option.id
-		},
+		// onLoad(option) {
+		// 	this.idnum = uni.getStorageSync("globalUser");
+		// 	console.log(this.idnum)
+		// 	// this.id = option.id
+		// },
 		onReady() {
 			this.datalist = [{
 					label: "周一",

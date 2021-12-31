@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
 		idnum: event.idnum,	
 		
 		// iffinish: event.iffinish ,
-		ing: event.ing
+		// ing: event.ing
 		
 	}).get()
 	//返回数据给客户端

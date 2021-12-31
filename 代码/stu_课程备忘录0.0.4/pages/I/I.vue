@@ -80,7 +80,7 @@
 		methods: {
 			edit: function() {
 				uni.navigateTo({
-					url: '../editI/editI'
+					url: '../EditI/EditI'
 				})
 			},
 

@@ -220,9 +220,7 @@
 											}
 										})
 									}
-									uni.navigateTo({
-										url: "../TeacherCourseTaskList/TeacherCourseTaskList"
-									})
+									uni.navigateBack();
 
 
 

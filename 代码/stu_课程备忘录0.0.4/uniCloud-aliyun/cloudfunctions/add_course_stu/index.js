@@ -12,8 +12,8 @@ exports.main = async (event, context) => {
 		course_add: event.course_add,
 	}).get()
 
-	for (let i = 0; i < 1000; i++) {
-		if (i == 800) {
+	for (let i = 0; i < 100000; i++) {
+		if (i == 80000) {
 			let result = await db.collection('course_stu').add({
 				course_id: which_course.data[0]._id,
 				course_name: event.course_name,

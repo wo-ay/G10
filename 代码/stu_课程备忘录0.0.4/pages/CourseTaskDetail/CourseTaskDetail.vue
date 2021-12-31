@@ -82,9 +82,7 @@
 							duration: 2000
 						});
 						setTimeout(function() {
-							uni.navigateTo({
-								url:'../CourseTask/CourseTask'
-							})
+							uni.navigateBack()
 						}, 2000);
 					}
 				})
