@@ -280,12 +280,12 @@
 				"selectedIconPath": "static/courses_after.png"
 			},
 
-			{
-				"text": "任务",
-				"pagePath": "pages/task/task",
-				"iconPath": "static/task.png",
-				"selectedIconPath": "static/task_after.png"
-			},
+			// {
+			// 	"text": "任务",
+			// 	"pagePath": "pages/task/task",
+			// 	"iconPath": "static/task.png",
+			// 	"selectedIconPath": "static/task_after.png"
+			// },
 			// {
 			// 	"text": "闹钟",
 			// 	"pagePath": "pages/alarm/alarm",
